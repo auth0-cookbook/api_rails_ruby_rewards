@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AccountsController < ApplicationController
+class AccountsController < SecuredController
   def show
     account = Account.find(params[:id])
 
@@ -8,7 +8,6 @@ class AccountsController < ApplicationController
 
     account.attributes.each do |key, value|
       camelkey = key.camelize(:lower)
-      puts camelkey
       account_hash[camelkey] = value
     end
 
